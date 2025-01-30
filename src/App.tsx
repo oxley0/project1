@@ -27,10 +27,10 @@ function App() {
   }, [isDarkMode]);
 
   const PriceCard = ({ slots, price }: { slots: string, price: string }) => (
-    <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 no-select">
+    <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 no-select">
       <div className="text-center">
-        <h3 className="text-xl font-bold text-purple-700 dark:text-purple-400 mb-4">{slots}</h3>
-        <p className="text-gray-600 dark:text-gray-300 text-lg">Rp{price}</p>
+        <h3 className="text-xl font-bold text-purple-700 mb-4">{slots}</h3>
+        <p className="text-gray-600 text-lg">Rp{price}</p>
       </div>
       <button className="mt-4 w-full bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-700 transition-colors">
         Pilih Paket
@@ -39,12 +39,12 @@ function App() {
   );
 
   const PreviewSection = ({ title, description, imageSrc }: { title: string, description: string, imageSrc: string }) => (
-    <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden mb-8 no-select">
+    <div className="bg-white rounded-xl shadow-lg overflow-hidden mb-8 no-select">
       <div className="p-6">
-        <h3 className="text-2xl font-bold text-purple-700 dark:text-purple-400 mb-3">{title}</h3>
-        <p className="text-gray-600 dark:text-gray-300 mb-4">{description}</p>
+        <h3 className="text-2xl font-bold text-purple-700 mb-3">{title}</h3>
+        <p className="text-gray-600 mb-4">{description}</p>
       </div>
-      <div className="border-t border-gray-100 dark:border-gray-700">
+      <div className="border-t border-gray-100">
         <img 
           src={imageSrc} 
           alt={title} 
@@ -57,14 +57,14 @@ function App() {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 no-select">
       {/* Header */}
-      <header className="bg-purple-600 dark:bg-purple-800 text-white">
+      <header className="bg-purple-600 text-white">
         <div className="container mx-auto px-4 py-6">
           <div className="flex justify-between items-center">
             <h1 className="text-2xl font-bold">Oxley Cloud</h1>
             <div className="flex items-center gap-4">
               <button
                 onClick={() => setIsDarkMode(!isDarkMode)}
-                className="p-2 rounded-lg hover:bg-purple-500 dark:hover:bg-purple-700 transition-colors"
+                className="p-2 rounded-lg hover:bg-purple-500 transition-colors"
                 aria-label="Toggle dark mode"
               >
                 {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
@@ -72,7 +72,7 @@ function App() {
               <nav className="relative" ref={menuRef}>
                 <button 
                   onClick={() => setIsMenuOpen(!isMenuOpen)}
-                  className="flex items-center gap-2 px-4 py-2 rounded-lg transition-colors hover:bg-purple-500 dark:hover:bg-purple-700"
+                  className="flex items-center gap-2 px-4 py-2 rounded-lg transition-colors hover:bg-purple-500"
                 >
                   Hosting
                   <ChevronDown className={`w-4 h-4 transition-transform ${isMenuOpen ? 'rotate-180' : ''}`} />
@@ -80,13 +80,13 @@ function App() {
                 
                 {/* Floating Menu */}
                 {isMenuOpen && (
-                  <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-xl py-2 z-50">
+                  <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-xl py-2 z-50">
                     <button 
                       onClick={() => {
                         setActiveTab('samp');
                         setIsMenuOpen(false);
                       }}
-                      className={`w-full text-left px-4 py-2 hover:bg-purple-50 dark:hover:bg-purple-900 transition-colors ${activeTab === 'samp' ? 'text-purple-600 dark:text-purple-400 font-bold bg-purple-50 dark:bg-purple-900' : 'text-gray-700 dark:text-gray-300'}`}
+                      className={`w-full text-left px-4 py-2 hover:bg-purple-50 transition-colors ${activeTab === 'samp' ? 'text-purple-600 font-bold bg-purple-50' : 'text-gray-700'}`}
                     >
                       SA-MP
                     </button>
@@ -95,7 +95,7 @@ function App() {
                         setActiveTab('openmp');
                         setIsMenuOpen(false);
                       }}
-                      className={`w-full text-left px-4 py-2 hover:bg-purple-50 dark:hover:bg-purple-900 transition-colors ${activeTab === 'openmp' ? 'text-purple-600 dark:text-purple-400 font-bold bg-purple-50 dark:bg-purple-900' : 'text-gray-700 dark:text-gray-300'}`}
+                      className={`w-full text-left px-4 py-2 hover:bg-purple-50 transition-colors ${activeTab === 'openmp' ? 'text-purple-600 font-bold bg-purple-50' : 'text-gray-700'}`}
                     >
                       OpenMP
                     </button>
@@ -108,7 +108,7 @@ function App() {
       </header>
 
       {/* Hero Section */}
-      <section className="bg-purple-700 dark:bg-purple-900 text-white py-20">
+      <section className="bg-purple-700 text-white py-20">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold mb-6">Oxley Cloud Best Hosting</h2>
           <p className="text-xl max-w-3xl mx-auto">
@@ -121,7 +121,7 @@ function App() {
       {/* Pricing Section */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">
+          <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">
             Pricelist Hosting {activeTab.toUpperCase()}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
@@ -136,39 +136,39 @@ function App() {
       </section>
 
       {/* Features Section */}
-      <section className="bg-white dark:bg-gray-800 py-16">
+      <section className="bg-white py-16">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">Keunggulan Kami</h2>
+          <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">Keunggulan Kami</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="p-6 rounded-xl bg-gray-50 dark:bg-gray-700 hover:shadow-lg transition-all">
-              <Shield className="w-12 h-12 text-purple-600 dark:text-purple-400 mb-4" />
-              <h3 className="text-xl font-bold mb-2 dark:text-white">Anti DDoS Game</h3>
-              <p className="dark:text-gray-300">Protection up to 99%</p>
+            <div className="p-6 rounded-xl bg-gray-50 hover:shadow-lg transition-all">
+              <Shield className="w-12 h-12 text-purple-600 mb-4" />
+              <h3 className="text-xl font-bold mb-2">Anti DDoS Game</h3>
+              <p>Protection up to 99%</p>
             </div>
-            <div className="p-6 rounded-xl bg-gray-50 dark:bg-gray-700 hover:shadow-lg transition-all">
-              <Server className="w-12 h-12 text-purple-600 dark:text-purple-400 mb-4" />
-              <h3 className="text-xl font-bold mb-2 dark:text-white">Uptime Server</h3>
-              <p className="dark:text-gray-300">Up to 98%</p>
+            <div className="p-6 rounded-xl bg-gray-50 hover:shadow-lg transition-all">
+              <Server className="w-12 h-12 text-purple-600 mb-4" />
+              <h3 className="text-xl font-bold mb-2">Uptime Server</h3>
+              <p>Up to 98%</p>
             </div>
-            <div className="p-6 rounded-xl bg-gray-50 dark:bg-gray-700 hover:shadow-lg transition-all">
-              <Globe2 className="w-12 h-12 text-purple-600 dark:text-purple-400 mb-4" />
-              <h3 className="text-xl font-bold mb-2 dark:text-white">Server Location</h3>
-              <p className="dark:text-gray-300">Indonesia & Singapore</p>
+            <div className="p-6 rounded-xl bg-gray-50 hover:shadow-lg transition-all">
+              <Globe2 className="w-12 h-12 text-purple-600 mb-4" />
+              <h3 className="text-xl font-bold mb-2">Server Location</h3>
+              <p>Indonesia & Singapore</p>
             </div>
-            <div className="p-6 rounded-xl bg-gray-50 dark:bg-gray-700 hover:shadow-lg transition-all">
-              <Clock className="w-12 h-12 text-purple-600 dark:text-purple-400 mb-4" />
-              <h3 className="text-xl font-bold mb-2 dark:text-white">30-Day Warranty</h3>
-              <p className="dark:text-gray-300">Unlimited Replacement</p>
+            <div className="p-6 rounded-xl bg-gray-50 hover:shadow-lg transition-all">
+              <Clock className="w-12 h-12 text-purple-600 mb-4" />
+              <h3 className="text-xl font-bold mb-2">30-Day Warranty</h3>
+              <p>Unlimited Replacement</p>
             </div>
-            <div className="p-6 rounded-xl bg-gray-50 dark:bg-gray-700 hover:shadow-lg transition-all">
-              <Activity className="w-12 h-12 text-purple-600 dark:text-purple-400 mb-4" />
-              <h3 className="text-xl font-bold mb-2 dark:text-white">DDoS Monitoring</h3>
-              <p className="dark:text-gray-300">24/7 with real-time notifications</p>
+            <div className="p-6 rounded-xl bg-gray-50 hover:shadow-lg transition-all">
+              <Activity className="w-12 h-12 text-purple-600 mb-4" />
+              <h3 className="text-xl font-bold mb-2">DDoS Monitoring</h3>
+              <p>24/7 with real-time notifications</p>
             </div>
-            <div className="p-6 rounded-xl bg-gray-50 dark:bg-gray-700 hover:shadow-lg transition-all">
-              <Users className="w-12 h-12 text-purple-600 dark:text-purple-400 mb-4" />
-              <h3 className="text-xl font-bold mb-2 dark:text-white">Technical Support</h3>
-              <p className="dark:text-gray-300">24/7 Customer Service</p>
+            <div className="p-6 rounded-xl bg-gray-50 hover:shadow-lg transition-all">
+              <Users className="w-12 h-12 text-purple-600 mb-4" />
+              <h3 className="text-xl font-bold mb-2">Technical Support</h3>
+              <p>24/7 Customer Service</p>
             </div>
           </div>
         </div>
@@ -177,7 +177,7 @@ function App() {
       {/* Preview Sections */}
       <section className="py-16 bg-gray-50 dark:bg-gray-900">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">Preview Panel</h2>
+          <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">Preview Panel</h2>
           
           <PreviewSection
             title="Control Panel"
@@ -213,21 +213,21 @@ function App() {
       </section>
 
       {/* CTA Section */}
-    <section className="fixed bottom-6 left-0 right-0 flex justify-center">
-      <a 
-        href="https://discord.gg/Zaxns4Gumb" 
-        className="flex items-center gap-2 bg-purple-600 dark:bg-purple-700 text-white px-6 py-3 rounded-full shadow-lg hover:bg-purple-700 dark:hover:bg-purple-800 transition-colors"
-        style={{ padding: "5px 10px" }}
-      >
-        <img 
-          src="https://cdn.discordapp.com/attachments/1324886368987381801/1333952162614738984/discord_logo.png?ex=679ac343&is=679971c3&hm=21649de85d3df78e8b4a5a4dcd4973bb8969d7c71e636d61eecfac9d638c1294&" 
-          alt="Discord Logo" 
-          className="w-10 h-10"
-        />
-        <span className="font-bold text-lg">Beli Sekarang</span>
-        <ChevronRight className="w-5 h-5" />
-      </a>
-    </section>
+      <section className="fixed bottom-6 left-0 right-0 flex justify-center">
+        <a 
+          href="https://discord.gg/Zaxns4Gumb" 
+          className="flex items-center gap-2 bg-purple-600 text-white px-6 py-3 rounded-full shadow-lg hover:bg-purple-700 transition-colors"
+          style={{ padding: "5px 10px" }}
+        >
+          <img 
+            src="https://cdn.discordapp.com/attachments/1324886368987381801/1333952162614738984/discord_logo.png?ex=679ac343&is=679971c3&hm=21649de85d3df78e8b4a5a4dcd4973bb8969d7c71e636d61eecfac9d638c1294&" 
+            alt="Discord Logo" 
+            className="w-10 h-10"
+          />
+          <span className="font-bold text-lg">Beli Sekarang</span>
+          <ChevronRight className="w-5 h-5" />
+        </a>
+      </section>
     </div>
   );
 }
