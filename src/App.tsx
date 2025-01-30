@@ -69,43 +69,43 @@ function App() {
               >
                 {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
               </button>
-              <button 
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="flex items-center gap-2 px-4 py-2 rounded-lg transition-colors hover:bg-purple-500"
-              >
-                Hosting
-                <ChevronDown className={`w-4 h-4 transition-transform ${isMenuOpen ? 'rotate-180' : ''}`} />
-              </button>
+              <nav className="relative" ref={menuRef}>
+                <button 
+                  onClick={() => setIsMenuOpen(!isMenuOpen)}
+                  className="flex items-center gap-2 px-4 py-2 rounded-lg transition-colors hover:bg-purple-500"
+                >
+                  Hosting
+                  <ChevronDown className={`w-4 h-4 transition-transform ${isMenuOpen ? 'rotate-180' : ''}`} />
+                </button>
+                
+                {/* Floating Menu */}
+                {isMenuOpen && (
+                  <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-xl py-2 z-50">
+                    <button 
+                      onClick={() => {
+                        setActiveTab('samp');
+                        setIsMenuOpen(false);
+                      }}
+                      className={`w-full text-left px-4 py-2 hover:bg-purple-50 dark:hover:bg-purple-900 transition-colors ${activeTab === 'samp' ? 'text-purple-600 dark:text-purple-400 font-bold bg-purple-50 dark:bg-purple-900' : 'text-gray-700 dark:text-gray-300'}`}
+                    >
+                      SA-MP
+                    </button>
+                    <button 
+                      onClick={() => {
+                        setActiveTab('openmp');
+                        setIsMenuOpen(false);
+                      }}
+                      className={`w-full text-left px-4 py-2 hover:bg-purple-50 dark:hover:bg-purple-900 transition-colors ${activeTab === 'openmp' ? 'text-purple-600 dark:text-purple-400 font-bold bg-purple-50 dark:bg-purple-900' : 'text-gray-700 dark:text-gray-300'}`}
+                    >
+                      OpenMP
+                    </button>
+                  </div>
+                )}
+              </nav>
             </div>
           </div>
         </div>
       </header>
-
-      {/* Floating Menu */}
-      {isMenuOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" ref={menuRef}>
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-xl py-4 w-64 transform scale-100 transition-transform">
-            <button 
-              onClick={() => {
-                setActiveTab('samp');
-                setIsMenuOpen(false);
-              }}
-              className={`w-full text-left px-6 py-3 hover:bg-purple-50 dark:hover:bg-purple-900 transition-colors ${activeTab === 'samp' ? 'text-purple-600 dark:text-purple-400 font-bold bg-purple-50 dark:bg-purple-900' : 'text-gray-700 dark:text-gray-300'}`}
-            >
-              SA-MP
-            </button>
-            <button 
-              onClick={() => {
-                setActiveTab('openmp');
-                setIsMenuOpen(false);
-              }}
-              className={`w-full text-left px-6 py-3 hover:bg-purple-50 dark:hover:bg-purple-900 transition-colors ${activeTab === 'openmp' ? 'text-purple-600 dark:text-purple-400 font-bold bg-purple-50 dark:bg-purple-900' : 'text-gray-700 dark:text-gray-300'}`}
-            >
-              OpenMP
-            </button>
-          </div>
-        </div>
-      )}
 
       {/* Hero Section */}
       <section className="bg-purple-600 text-white py-20">
